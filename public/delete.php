@@ -9,12 +9,12 @@ try {
      
     // get record ID
     // isset() is a PHP function used to verify if a value is there or not
-    $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+    $post_id=isset($_GET['post_id']) ? $_GET['post_id'] : die('ERROR: Record ID not found.');
  
     // delete query
-    $query = "DELETE FROM posts WHERE id = ?";
+    $query = "DELETE FROM posts WHERE post_id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(1, $id);
+    $stmt->bindParam(1, $post_id);
      
     if($stmt->execute()){
         // redirect to read records page and 

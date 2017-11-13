@@ -14,16 +14,16 @@ $conn = new PDO($dsn, $user, $password);
 
 // get passed parameter value, in this case, the record ID
 // isset() is a PHP function used to verify if a value is there or not
-$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+$post_id=isset($_GET['post_id']) ? $_GET['post_id'] : die('ERROR: Record ID not found.');
  
 // read current record's data
 try {
     // prepare select query
-    $query = "SELECT id, title, content, tag FROM posts WHERE id = ? LIMIT 0,1";
+    $query = "SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1";
     $stmt = $conn->prepare( $query );
  
     // this is the first question mark
-    $stmt->bindParam(1, $id);
+    $stmt->bindParam(1, $post_id);
  
     // execute our query
     $stmt->execute();

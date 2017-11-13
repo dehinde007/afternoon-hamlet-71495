@@ -12,7 +12,7 @@ $password = '8eab73213045662b7e6d5bc4e09616e10c8d41828a818209ab8c602a36acdec6';
 $conn = new PDO($dsn, $user, $password);
 // get passed parameter value, in this case, the record ID
 // isset() is a PHP function used to verify if a value is there or not
-$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+$post_id=isset($_GET['post_id']) ? $_GET['post_id'] : die('ERROR: Record ID not found.');
  
 // check if form was submitted
 if($_POST){
@@ -22,7 +22,7 @@ if($_POST){
         // write update query
         // in this case, it seemed like we have so many fields to pass and 
         // it is better to label them and not use question marks
-        $sql = $conn->prepare("UPDATE posts SET title=:title, content=:content, tag=:tag WHERE id = :id");
+        $sql = $conn->prepare("UPDATE posts SET title=:title, content=:content, tag=:tag WHERE post_id = :post_id");
         // posted values
         $title=htmlspecialchars(strip_tags($_POST['title']));
         $content=htmlspecialchars(strip_tags($_POST['content']));
@@ -32,7 +32,7 @@ if($_POST){
         $sql->bindParam(':title', $title);
         $sql->bindParam(':content', $content);
         $sql->bindParam(':tag', $tag);
-        $sql->bindParam(':id', $id);
+        $sql->bindParam(':post_id', $post_id);
          
         // Execute the query
         if($sql->execute()){
@@ -50,7 +50,7 @@ if($_POST){
 }
 ?>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}");?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?post_id={$post_id}");?>" method="post">
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td class="bold">Title</td>
