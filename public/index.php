@@ -1,4 +1,3 @@
-$_SERVER['https://afternoon-hamlet-71495.herokuapp.com/index.php']
 <?php include "templates/header.php"; ?>
 <div class="container">
 
