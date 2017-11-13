@@ -22,7 +22,7 @@ if($_POST){
         // write update query
         // in this case, it seemed like we have so many fields to pass and 
         // it is better to label them and not use question marks
-        $sql = $conn->prepare("UPDATE blogdata SET title=:title, content=:content, tag=:tag WHERE id = :id");
+        $sql = $conn->prepare("UPDATE posts SET title=:title, content=:content, tag=:tag WHERE id = :id");
         // posted values
         $title=htmlspecialchars(strip_tags($_POST['title']));
         $content=htmlspecialchars(strip_tags($_POST['content']));

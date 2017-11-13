@@ -24,7 +24,7 @@ $conn = new PDO($dsn, $user, $password);
 
   // set the PDO error mode to exception
    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   $stmt = $conn->prepare("SELECT id, title, content, tag FROM blogdata"); 
+   $stmt = $conn->prepare("SELECT id, title, content, tag FROM posts"); 
    $stmt->execute();
 
    $num = $stmt->rowCount();

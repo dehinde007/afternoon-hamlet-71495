@@ -19,7 +19,7 @@ $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 // read current record's data
 try {
     // prepare select query
-    $query = "SELECT id, title, content, tag FROM blogdata WHERE id = ? LIMIT 0,1";
+    $query = "SELECT id, title, content, tag FROM posts WHERE id = ? LIMIT 0,1";
     $stmt = $conn->prepare( $query );
  
     // this is the first question mark
