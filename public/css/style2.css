@@ -1,0 +1,20 @@
+h1{
+	font-weight: bold!important;
+}
+
+.indexh1{
+	text-decoration: underline;
+	text-align: center;
+	margin-top: 40px;
+}
+
+ td .btn{
+ 	margin-left: 5px;
+ }
+
+.bold{
+	font-weight: bold;
+}
+
+.createform{
+}

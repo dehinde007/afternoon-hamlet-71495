@@ -1,3 +1,8 @@
+<?php include "templates/header.php"; ?>
+<div class="container">
+
+<h1 class="indexh1">Simple Database App</h1><br>
+
 <?php
 $dsn = 'pgsql:dbname=d41r33irt5d95s;host=ec2-50-17-235-5.compute-1.amazonaws.com';
 $user = 'fhvelsuqwoldap';
@@ -34,12 +39,18 @@ $conn = null;
 
 <h2>Add a post</h2>
 
-<form action="" method="post">
-  <input type="title" name="title">
-   <input type="content" name="content">
-  <input type="tag" name="tag">
-  <input type="submit" name="submit" value="submit">
+<form action="" method="post" class="createform">
+  <p><input type="title" name="title" placeholder="Title" class="form-control"></p>
+  <p><input type="content" name="content" placeholder="Description" class="form-control"></p>
+  <p><input type="tag" name="tag" placeholder="Tag" class="form-control"></p>
+  <input type="submit" name="submit" value="submit" class="btn btn-default">
 </form>
-<a href="index.php">Back to home</a>
 
+<br><a href='index.php' class='btn btn-info'>Back to posts</a>
+
+</div>
+
+<div class="container">
+<br><br>    
 <?php include "templates/footer.php"; ?>
+</div>
