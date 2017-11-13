@@ -19,7 +19,7 @@ $post_id=isset($_GET['post_id']) ? $_GET['post_id'] : die('ERROR: Record ID not 
 // read current record's data
 try {
     // prepare select query
-    $query = "SELECT post_id, title, content, tag FROM post WHERE post_id = ? LIMIT 0,1";
+    $query = "SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1";
     $stmt = $conn->prepare( $query );
  
     // this is the first question mark

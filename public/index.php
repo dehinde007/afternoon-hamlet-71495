@@ -1,4 +1,4 @@
-
+$_SERVER['https://afternoon-hamlet-71495.herokuapp.com/index.php']
 <?php include "templates/header.php"; ?>
 <div class="container">
 
@@ -62,7 +62,6 @@ if($num>0){
                 echo "<td>{$tag}</td>";
                 echo "<td>";
                     // read one record 
-                    echo "<a href='read.php?post_id={$post_id}' class='btn btn-info m-r-1em'>View </a>";
                      
                     // we will use this links on next part of this post
                     echo "<a href='update.php?post_id={$post_id}' class='btn btn-primary m-r-1em'>Edit</a>";
