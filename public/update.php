@@ -10,6 +10,7 @@ $dsn = 'pgsql:dbname=d41r33irt5d95s;host=ec2-50-17-235-5.compute-1.amazonaws.com
 $user = 'fhvelsuqwoldap';
 $password = '8eab73213045662b7e6d5bc4e09616e10c8d41828a818209ab8c602a36acdec6';
 $conn = new PDO($dsn, $user, $password);
+
 // get passed parameter value, in this case, the record ID
 // isset() is a PHP function used to verify if a value is there or not
 $post_id=isset($_GET['post_id']) ? $_GET['post_id'] : die('ERROR: Record ID not found.');
@@ -47,22 +48,41 @@ if($_POST){
     catch(PDOException $exception){
         die('ERROR: ' . $exception->getMessage());
     }
-}
+} 
+    // prepare select query
+    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1");
+ 
+    // this is the first question mark
+    $sql->bindParam(1, $post_id);
+ 
+    // execute our query
+    $sql->execute();
+ 
+    // store retrieved row to a variable
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+ 
+    // values to fill up our form
+    $title = $row['title'];
+    $content = $row['content'];
+    $tag = $row['tag'];
+
 ?>
+
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?post_id={$post_id}");?>" method="post">
     <table class='table table-hover table-responsive table-bordered'>
+        <input type="hidden" id="<?php echo $row['post_id'] ?> ">
         <tr>
             <td class="bold">Title</td>
-            <td><input type='text' name='title' value="<?php echo htmlspecialchars($title, ENT_QUOTES);  ?>" class='form-control' /></td>
+            <td><input type='text' name='title' id="<?php echo $row['post_id'] ?>" value="<?php echo $row['title'] ?>" class='form-control' /></td>
         </tr>
         <tr>
             <td class="bold">Description</td>
-            <td><textarea name='content' class='form-control'><?php echo htmlspecialchars($content, ENT_QUOTES);  ?></textarea></td>
+            <td><textarea name='content' class='form-control' id="<?php echo $row['post_id'] ?>"><?php echo $row['content'] ?></textarea></td>
         </tr>
         <tr>
             <td class="bold">Tag</td>
-            <td><input type='text' name='tag' value="<?php echo htmlspecialchars($tag, ENT_QUOTES);  ?>" class='form-control' /></td>
+            <td><input type='text' name='tag' id="<?php echo $row['post_id'] ?>" value="<?php echo $row['tag'] ?>" class='form-control' /></td>
         </tr>
         <tr>
             <td></td>
@@ -73,6 +93,11 @@ if($_POST){
         </tr>
     </table>
 </form>
+
+
+
+
+
 
 </div>
 

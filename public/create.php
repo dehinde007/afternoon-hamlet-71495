@@ -4,19 +4,19 @@
 <h1 class="indexh1">Simple Database App</h1><br>
 
 <?php
-$dsn = 'pgsql:dbname=d41r33irt5d95s;host=ec2-50-17-235-5.compute-1.amazonaws.com';
-$user = 'fhvelsuqwoldap';
-$password = '8eab73213045662b7e6d5bc4e09616e10c8d41828a818209ab8c602a36acdec6';
+$servername = "localhost";
+$username = "root";
+$password = "ambition1";
+//Creating connection for mysql
+$conn = new PDO("mysql:host=$servername;dbname=sblog", $username, $password);
 
  If(isset($_POST['submit'])){
     try {
-   $conn = new PDO($dsn, $user, $password);
-
   // set the PDO error mode to exception
    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
    // prepare sql and bind parameters
-   $sql = $conn->prepare("INSERT INTO posts (title, content, tag)
+   $sql = $conn->prepare("INSERT INTO blogdata (title, content, tag)
     VALUES (:title, :content, :tag)");
     $sql->bindParam(':title', $title);
     $sql->bindParam(':content', $content);
