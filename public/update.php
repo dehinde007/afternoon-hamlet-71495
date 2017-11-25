@@ -50,10 +50,10 @@ if($_POST){
     }
 } 
     // prepare select query
-    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1");
+    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = :post_id");
  
     // this is the first question mark
-    $sql->bindParam(1, $post_id);
+    $sql->bindParam(':post_id', $post_id);
  
     // execute our query
     $sql->execute();
