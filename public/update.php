@@ -6,6 +6,10 @@
 <h2 class="">Update</h1>
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $dsn = 'pgsql:dbname=d41r33irt5d95s;host=ec2-50-17-235-5.compute-1.amazonaws.com';
 $user = 'fhvelsuqwoldap';
 $password = '8eab73213045662b7e6d5bc4e09616e10c8d41828a818209ab8c602a36acdec6';
@@ -50,23 +54,21 @@ if($_POST){
     }
 } 
     // prepare select query
-    $sqlo = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1");
+    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = :post_id LIMIT 0,1");
  
     // this is the first question mark
-    $sqlo->bindParam(1, $post_id);
+    $sql->bindParam(1, $post_id);
  
     // execute our query
-    $sqlo->execute();
+    $sql->execute();
  
     // store retrieved row to a variable
-    $row = $sqlo->fetch(PDO::FETCH_ASSOC);
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
  
     // values to fill up our form
     $title = $row['title'];
     $content = $row['content'];
     $tag = $row['tag'];
-    $post_id = $row['post_id'];
-
 
 ?>
 
