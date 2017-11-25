@@ -54,10 +54,10 @@ if($_POST){
     }
 } 
     // prepare select query
-    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = :post_id LIMIT 0,1");
+    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = :post_id");
  
     // this is the first question mark
-    $sql->bindParam(1, $post_id);
+    $sql->bindParam(':post_id', $post_id);
  
     // execute our query
     $sql->execute();
@@ -78,7 +78,7 @@ if($_POST){
         <input type="hidden" id="<?php echo $row['post_id'] ?> ">
         <tr>
             <td class="bold">Title</td>
-            <td><input type='text' name='title' id="<?php echo $row['post_id'] ?>" value="<?php echo $row['title'] ?>" class='form-control' /></td>
+            <td><input type='text' name='title' value="<?php echo $row['title'] ?>" class='form-control' /></td>
         </tr>
         <tr>
             <td class="bold">Description</td>
