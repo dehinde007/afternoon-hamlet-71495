@@ -74,7 +74,7 @@ if($_POST){
         <input type="hidden" id="<?php echo $row['post_id'] ?> ">
         <tr>
             <td class="bold">Title</td>
-            <td><input type='text' name='title' value="<?php echo $row['title'] ?>" class='form-control' /></td>
+            <td><input type='text' name='title' value="<?php echo $row['title'] ?>" class='form-control'></td>
         </tr>
         <tr>
             <td class="bold">Description</td>
@@ -82,7 +82,7 @@ if($_POST){
         </tr>
         <tr>
             <td class="bold">Tag</td>
-            <td><input type='text' name='tag' value="<?php echo $row['tag'] ?>" class='form-control' /></td>
+            <td><input type='text' name='tag' value="<?php echo $row['tag'] ?>" class='form-control'></td>
         </tr>
         <tr>
             <td></td>
@@ -93,9 +93,6 @@ if($_POST){
         </tr>
     </table>
 </form>
-
-
-
 
 
 
