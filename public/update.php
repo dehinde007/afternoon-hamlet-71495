@@ -50,7 +50,7 @@ if($_POST){
     }
 } 
     // prepare select query
-    $sqlo = $conn->prepare("select post_id, title, content, tag FROM posts where post_id = ? LIMIT 0,1");
+    $sqlo = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1");
  
     // this is the first question mark
     $sqlo->bindParam(1, $post_id);
@@ -65,6 +65,8 @@ if($_POST){
     $title = $row['title'];
     $content = $row['content'];
     $tag = $row['tag'];
+    $post_id = $row['post_id'];
+
 
 ?>
 
