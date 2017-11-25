@@ -6,10 +6,6 @@
 <h2 class="">Update</h1>
 
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 $dsn = 'pgsql:dbname=d41r33irt5d95s;host=ec2-50-17-235-5.compute-1.amazonaws.com';
 $user = 'fhvelsuqwoldap';
 $password = '8eab73213045662b7e6d5bc4e09616e10c8d41828a818209ab8c602a36acdec6';
@@ -54,10 +50,10 @@ if($_POST){
     }
 } 
     // prepare select query
-    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = :post_id");
+    $sql = $conn->prepare("SELECT post_id, title, content, tag FROM posts WHERE post_id = ? LIMIT 0,1");
  
     // this is the first question mark
-    $sql->bindParam(':post_id', $post_id);
+    $sql->bindParam(1, $post_id);
  
     // execute our query
     $sql->execute();
@@ -82,11 +78,11 @@ if($_POST){
         </tr>
         <tr>
             <td class="bold">Description</td>
-            <td><textarea name='content' class='form-control' id="<?php echo $row['post_id'] ?>"><?php echo $row['content'] ?></textarea></td>
+            <td><textarea name='content' class='form-control'><?php echo $row['content'] ?></textarea></td>
         </tr>
         <tr>
             <td class="bold">Tag</td>
-            <td><input type='text' name='tag' id="<?php echo $row['post_id'] ?>" value="<?php echo $row['tag'] ?>" class='form-control' /></td>
+            <td><input type='text' name='tag' value="<?php echo $row['tag'] ?>" class='form-control' /></td>
         </tr>
         <tr>
             <td></td>
