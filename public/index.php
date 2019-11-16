@@ -9,7 +9,11 @@ function delete_post( post_id ){
     var answer = confirm('Are you sure?');
     if (answer){
         // if user clicked ok, 
+<<<<<<< HEAD
         // pass the id to delete.php and execute the delete query...
+=======
+        // pass the id to delete.php and execute the delete query..
+>>>>>>> b9d9a1a5b4835cfe6c349d67d6da4ce62fe54b1d
         window.location = 'delete.php?post_id=' + post_id;
     } 
 }
